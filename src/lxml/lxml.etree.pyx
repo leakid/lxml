@@ -3029,7 +3029,12 @@ def Comment(text=None):
     else:
         text = _utf8(text)
         if b'--' in text or text.endswith(b'-'):
-            raise ValueError("Comment may not contain '--' or end with '-'")
+            # raise ValueError("Comment may not contain '--' or end with '-'")
+            import warnings
+            warnings.warn(
+                u"Comment may not contain '--' or end with '-'",
+                FutureWarning
+            )
 
     c_doc = _newXMLDoc()
     doc = _documentFactory(c_doc, None)
